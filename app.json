@@ -1,11 +1,14 @@
 {
   "expo": {
-    "name": "meuapp",
-    "slug": "meuapp",
-    "version": "1.0.0",
+    "name": "FakePeopleGeneratorApp",
+    "slug": "FakePeopleGeneratorApp",
+    "version": "1.0.1",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.appLaugosDevelopment.FakePeopleGenerator"
+    }
   },
-  "name": "meuapp"
+  "name": "FakePeopleGeneratorApp"
 }
