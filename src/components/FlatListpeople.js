@@ -6,7 +6,7 @@ const FlatListpeople = (props) => {
     const {people} = props;
     const {navigation} = props;
 
-    const NUMBER_TO_FETCH = 10;
+    const NUMBER_TO_FETCH = 5;
 
     const addMorePeople = () => {
         props.fetchData(NUMBER_TO_FETCH);

@@ -33,7 +33,7 @@ export default class ListPage extends React.Component{
         API_Services.List_user_random_by_number(numberFetch)
         .then(response => {
             const {results} = response.data;
-            let sumUpData = [...this.state.peoples, ...results];
+            let sumUpData = [...this.state.people, ...results];
             this.setState({load_more_error: false, loading_more: false, people: sumUpData});
         })
         .catch(error => {
