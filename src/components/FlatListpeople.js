@@ -1,33 +1,30 @@
 import React from 'react';
-import { View, Text} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import PeopleListitem from './PeopleListitem';
+import ItemPerson from './ItemPerson';
 
 const FlatListpeople = (props) => {
-    const {peoples} = props;
+    const {people} = props;
     const {navigation} = props;
 
-    const number_to_fetch = 10;
+    const NUMBER_TO_FETCH = 10;
 
-    const Item_people = (item) => {
-        return (
-            <PeopleListitem people={item} navigation={navigation}/>
-        );
+    const addMorePeople = () => {
+        props.fetchData(NUMBER_TO_FETCH);
     }
 
-    const Add_more_data = () => {
-        props.Fetch_data(number_to_fetch);
+    const returnPerson = ({item}) => {
+        return <ItemPerson person={item} navigation={navigation}/>
     }
 
     return(
         <FlatList
-            data={peoples}
+            data={people}
             onEndReachedThreshold={0.5}
             onEndReached={() => {
-                Add_more_data();
+                addMorePeople();
             }}
-            renderItem={({item}) => Item_people(item)}
-            keyExtractor={(item, i) => i}
+            renderItem={returnPerson}
+            keyExtractor={(item, index) => item.login.uuid.toString()}
         />
     );
 }

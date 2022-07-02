@@ -2,15 +2,14 @@ import React from 'react';
 import { Text, View, ActivityIndicator, StyleSheet} from 'react-native';
 import API_Services from '../services/API_Service';
 import FlatListpeople from '../components/FlatListpeople';
-import axios from 'axios';
 
 export default class ListPage extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
-            peoples: [],
-            loading: false,
+            people: [],
+            loading: true,
             loading_more: false,
             load_more_error: false,
             error: false,
@@ -20,33 +19,31 @@ export default class ListPage extends React.Component{
     }
 
     componentDidMount(state, props){
-        this.setState({loading: true});
         API_Services.List_user_random_by_number(this.state.user_numbers)
         .then(response => {
             const {results} = response.data;
-            this.setState({loading: false, error: false, peoples: results});
+            this.setState({loading: false, error: false, people: results});
         })
         .catch(error => {
             this.setState({loading: false, error: true, error_message_fetch: error})
-        });    
+        });  
     }
 
-    Fetch_data = (number_to_fetch) => {
-        this.setState({loading_more: true});
-        API_Services.List_user_random_by_number(number_to_fetch)
+    fetchData = (numberFetch) => {
+        API_Services.List_user_random_by_number(numberFetch)
         .then(response => {
             const {results} = response.data;
-            let added_data = [...this.state.peoples, ...results]
-            this.setState({load_more_error: false, loading_more: false, peoples: added_data});
+            let sumUpData = [...this.state.peoples, ...results];
+            this.setState({load_more_error: false, loading_more: false, people: sumUpData});
         })
         .catch(error => {
             this.setState({load_more_error:true, loading_more: false});
         })
     }
 
-    Render_list = () => {
+    renderList = () => {
         if(this.state.loading){
-            return (
+            return(
                 <View style={style.container}>
                     <ActivityIndicator size="large" color="#E13b3f"/>
                 </View> 
@@ -61,7 +58,7 @@ export default class ListPage extends React.Component{
         }
         else{
             return(
-                <FlatListpeople peoples={this.state.peoples} navigation={this.props.navigation} Fetch_data={this.Fetch_data}/>
+                <FlatListpeople people={this.state.people} navigation={this.props.navigation} fetchData={this.fetchData}/>
             );
         }
     }
@@ -69,7 +66,7 @@ export default class ListPage extends React.Component{
     render(){
         return (
             <View style={style.container}>
-                {this.Render_list()}
+                {this.renderList()}
             </View>
         );
     }

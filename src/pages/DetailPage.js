@@ -1,34 +1,31 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Image, StyleSheet, Dimensions, ShadowPropTypesIOS } from 'react-native';
 import Line from '../components/Line';
 
 export default class DetailPage extends React.Component{
     constructor(props){
         super(props);
 
-        const {route} = props;
-
         this.state = {
-            people: route.params.people
+            person: props.route.params.person,
+            uriLarge: props.route.params.person.picture.large
         }
     }
 
     render(){
-        let text = this.state.people.picture.large;
         return(
             <View style={style.container}>
                 <Image
                     style={style.styleimg}
-                    source={{ uri:text }}
+                    source={{ uri:this.state.uriLarge }}
                 />
 
                 <View style={style.container_labels}>
-                    <Line label="Name" content={this.state.people.name.first + " " + this.state.people.name.last}/>
-                    <Line label="Gender" content={this.state.people.gender}/>
-                    <Line label="Email" content={this.state.people.email}/>
-                    <Line label="Phone" content={this.state.people.cell}/>
-                    <Line label="Country" content={this.state.people.location.country}/>
+                    <Line label="Name" content={this.state.person.name.first + " " + this.state.person.name.last}/>
+                    <Line label="Gender" content={this.state.person.gender}/>
+                    <Line label="Email" content={this.state.person.email}/>
+                    <Line label="Phone" content={this.state.person.cell}/>
+                    <Line label="Country" content={this.state.person.location.country}/>
                 </View> 
             </View>
         );

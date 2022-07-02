@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-const PeopleListitem = (props) => {
+const ItemPerson= (props) => {
     const {person} = props;
     const {navigation} = props;
 
@@ -47,4 +47,4 @@ const style = StyleSheet.create({
     }
 });
 
-export default PeopleListitem;
+export default ItemPerson;
