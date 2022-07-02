@@ -19,7 +19,7 @@ You can also do the tests with the command `npm test` in order to run jest.
 If you prefer to use other folder pattern, you can easily set up the jest with `jest.config.js` file to make it watch upon an especific directory.
 
 ## Directory patterns
-* `test` - Folder with all the tests for the project.
+* `tests` - Folder with all the tests for the project.
 * `src` - Includes the pages, components and services layers.
 
 <!-- ## Tips
