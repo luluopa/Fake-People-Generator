@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import DetailPage from './pages/DetailPage';
-import ListPage from './pages/ListPage';
+import DetailPage from './src/pages/DetailPage';
+import ListPage from './src/pages/ListPage';
 
 const Stack = createNativeStackNavigator();
 

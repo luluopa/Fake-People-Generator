@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, ActivityIndicator, StyleSheet} from 'react-native';
-import API_Services from '../API_Services/API_Service';
+import API_Services from '../services/API_Service';
 import FlatListpeople from '../components/FlatListpeople';
 import axios from 'axios';
 
